@@ -1,6 +1,7 @@
 import hashlib
 import sys
 import argparse
+import time
 from colorama import Fore, Style
 
 green = Fore.GREEN
@@ -15,6 +16,30 @@ def hesk_iPass2Hash(plaintext):
     return corehash
 
 def main():
+    print('''
+
+   ▄█    █▄       ▄████████    ▄████████    ▄█   ▄█▄                                  
+  ███    ███     ███    ███   ███    ███   ███ ▄███▀                                  
+  ███    ███     ███    █▀    ███    █▀    ███▐██▀                                    
+ ▄███▄▄▄▄███▄▄  ▄███▄▄▄       ███         ▄█████▀                                     
+▀▀███▀▀▀▀███▀  ▀▀███▀▀▀     ▀███████████ ▀▀█████▄                                     
+  ███    ███     ███    █▄           ███   ███▐██▄                                    
+  ███    ███     ███    ███    ▄█    ███   ███ ▀███▄                                  
+  ███    █▀      ██████████  ▄████████▀    ███   ▀█▀                                  
+                                           ▀                                          
+ ▄████████    ▄████████    ▄████████  ▄████████    ▄█   ▄█▄    ▄████████    ▄████████ 
+███    ███   ███    ███   ███    ███ ███    ███   ███ ▄███▀   ███    ███   ███    ███ 
+███    █▀    ███    ███   ███    ███ ███    █▀    ███▐██▀     ███    █▀    ███    ███ 
+███         ▄███▄▄▄▄██▀   ███    ███ ███         ▄█████▀     ▄███▄▄▄      ▄███▄▄▄▄██▀ 
+███        ▀▀███▀▀▀▀▀   ▀███████████ ███        ▀▀█████▄    ▀▀███▀▀▀     ▀▀███▀▀▀▀▀   
+███    █▄  ▀███████████   ███    ███ ███    █▄    ███▐██▄     ███    █▄  ▀███████████ 
+███    ███   ███    ███   ███    ███ ███    ███   ███ ▀███▄   ███    ███   ███    ███ 
+████████▀    ███    ███   ███    █▀  ████████▀    ███   ▀█▀   ██████████   ███    ███ 
+             ███    ███                           ▀                        ███    ███ 
+                                                           
+by th3g3ntl3m4n
+''')
+    time.sleep(2)
     parser = argparse.ArgumentParser(description="Crack a hash from HESK Help Desk Software")
     parser.add_argument('hash', type=str, help="The hash to crack")
     parser.add_argument('wordlist', type=argparse.FileType('r'), help="The wordlist")
@@ -26,7 +51,7 @@ def main():
             plaintext = line.rstrip('\n')
             print(f"[...] Trying: {plaintext} ...")
             hash_value = hesk_iPass2Hash(plaintext)
-            #print(f"Hash value: {hash_value}")
+            time.sleep(0.005)
 
             if hash_to_crack == hash_value:
                 print(f"{green}{Style.BRIGHT}[+] The password is: {plaintext}{Style.RESET_ALL}")
